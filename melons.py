@@ -1,13 +1,18 @@
 """This file should have our melon-type classes in it."""
 
+class MelonOrder(object):
+    melon_price = 5
 
-class WatermelonOrder(object):
+    def get_base_price(self):
+
+        return self.melon_price
+
+class WatermelonOrder(MelonOrder):
     species = "Watermelon"
     color = "green"
     imported = False
     shape = 'natural'
     seasons = ['Fall', 'Summer']
-    melon_price = 5
     discount = 0.75
     discount_qty = 3
 
@@ -16,20 +21,19 @@ class WatermelonOrder(object):
 
          Return a float of the total price.
         """
-        total = self.melon_price * int(qty)
+        total = self.get_base_price() * int(qty)
         if qty >= self.discount_qty:
             total = self.discount * total
 
 
         return total
 
-class CantaloupeOrder(object):
+class CantaloupeOrder(MelonOrder):
     species = "Cantaloupe"
     color = "tan"
     imported = False
     shape = 'natural'
     seasons = ['Spring', 'Summer']
-    melon_price = 5
     discount = 0.5
     discount_qty = 5
 
@@ -38,19 +42,18 @@ class CantaloupeOrder(object):
 
          Return a float of the total price.
         """
-        total = self.melon_price * int(qty)
+        total = self.get_base_price() * int(qty)
         if qty >= self.discount_qty:
             total = self.discount * total
 
         return total
 
-class CasabaOrder(object):
+class CasabaOrder(MelonOrder):
     species = "Casaba"
     color = "green"
     imported = True
     shape = 'natural'
     seasons = ['Spring', 'Summer', 'Fall', 'Winter']
-    melon_price = 6
     shipping_cost = 1.5
 
     def get_price(self, qty):
@@ -58,17 +61,16 @@ class CasabaOrder(object):
 
          Return a float of the total price.
         """
-        total = self.melon_price * self.shipping_cost * int(qty)
+        total = (self.get_base_price() + 1) * self.shipping_cost * int(qty)
 
         return total
 
-class SharlynOrder(object):
+class SharlynOrder(MelonOrder):
     species = "Sharlyn"
     color = "tan"
     imported = True
     shape = 'natural'
     seasons = ['Summer']
-    melon_price = 5
     shipping_cost = 1.5
 
     def get_price(self, qty):
@@ -76,17 +78,16 @@ class SharlynOrder(object):
 
          Return a float of the total price.
         """
-        total = self.melon_price * self.shipping_cost * int(qty)
+        total = self.get_base_price() * self.shipping_cost * int(qty)
 
         return total
 
-class SantaClausOrder(object):
+class SantaClausOrder(MelonOrder):
     species = "Santa Claus"
     color = "green"
     imported = True
     shape = 'natural'
     seasons = ['Winter', 'Spring']
-    melon_price = 5
     shipping_cost = 1.5
 
     def get_price(self, qty):
@@ -94,34 +95,32 @@ class SantaClausOrder(object):
 
          Return a float of the total price.
         """
-        total = self.melon_price * self.shipping_cost * int(qty)
+        total = self.get_base_price() * self.shipping_cost * int(qty)
 
         return total
 
-class ChristmasOrder(object):
+class ChristmasOrder(MelonOrder):
     species = "Christmas"
     color = "green"
     imported = False
     shape = 'natural'
     seasons = ['Winter']
-    melon_price = 5
 
     def get_price(self, qty):
         """Calculate price, given a number of melons ordered.
 
          Return a float of the total price.
         """
-        total = self.melon_price * int(qty)
+        total = self.get_base_price() * int(qty)
 
         return total
 
-class HornedMelonOrder(object):
+class HornedMelonOrder(MelonOrder):
     species = "Horned Melon"
     color = "yellow"
     imported = True
     shape = 'natural'
     seasons = ['Summer']
-    melon_price = 5
     shipping_cost = 1.5
 
     def get_price(self, qty):
@@ -129,17 +128,16 @@ class HornedMelonOrder(object):
 
          Return a float of the total price.
         """
-        total = self.melon_price * self.shipping_cost * int(qty)
+        total = self.get_base_price() * self.shipping_cost * int(qty)
 
         return total
 
-class XiguaOrder(object):
+class XiguaOrder(MelonOrder):
     species = "Xigua"
     color = "black"
     imported = True
     shape = 'square'
     seasons = ['Summer']
-    melon_price = 5
     shipping_cost = 1.5
     square_surcharge = 2
 
@@ -148,31 +146,23 @@ class XiguaOrder(object):
 
          Return a float of the total price.
         """
-        total = self.melon_price * self.square_surcharge *  self.shipping_cost * int(qty)
+        total = self.get_base_price() * self.square_surcharge *  self.shipping_cost * int(qty)
 
         return total
 
-class OgenOrder(object):
+class OgenOrder(MelonOrder):
     species = "Ogen"
     color = "tan"
     imported = False
     shape = 'natural'
     seasons = ['Spring', 'Summer']
-    melon_price = 6
 
     def get_price(self, qty):
         """Calculate price, given a number of melons ordered.
 
          Return a float of the total price.
         """
-        total = self.melon_price *  int(qty)
+        total = (self.get_base_price() + 1) *  int(qty)
 
         return total                
-
-# class Melon(object):
-#     name = None
-#     color = None
-#     is_imported = None
-#     shape = None
-#     season = None
 
